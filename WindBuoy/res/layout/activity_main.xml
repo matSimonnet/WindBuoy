@@ -7,37 +7,25 @@
     android:stretchColumns="1"
     tools:context=".MainActivity" >
 
-
     		<TextView
 	        android:layout_height="wrap_content"
-	        android:text="@string/velocity" 
-	        android:textSize="50sp"
+	        android:text="@string/direction" 
+	        android:textSize="20sp"
 	        />
+	        <TextView
+	        android:id="@+id/direction"    
+	        android:layout_height="wrap_content"
+	        android:textSize="100sp"
+	        />
+	        <TextView
+	        android:layout_height="wrap_content"
+	        android:text="@string/velocity"
+	        android:textSize="20sp"
+	         />
 	        <TextView
 	        android:id="@+id/velocity"    
 	        android:layout_height="wrap_content"
-	        android:textSize="40sp"
-	        />
-	        <TextView
-	        android:layout_height="wrap_content"
-	        android:text="@string/direction"
-	        android:textSize="50sp"
-	         />     
-	        
-			<ImageView 
-			    
-			    />
-	        
-
-	        <TextView
-	        android:layout_width="wrap_content"
-	        android:text="@string/velocityEvolution" 
-	        android:textSize="50sp"
-	        />
-	        <TextView
-	        android:layout_width="wrap_content"
-	        android:text="@string/directionEvolution" 
-	        android:textSize="50sp"
-	        />
+	        android:textSize="100sp"
+	        />     
         
 </TableLayout>
