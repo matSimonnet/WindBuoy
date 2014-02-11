@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">WindBuoy</string>
+    <string name="action_settings">Settings</string>
+    <string name="velocity">wind velocity (kts)</string>
+    <string name="direction">wind direction</string>
+    <string name="velocityEvolution">wind velocity evolution</string>
+    <string name="directionEvolution">wind direction evolution</string>
+
+</resources>
