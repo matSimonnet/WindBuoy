@@ -3,29 +3,32 @@
     
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
-    
-    android:stretchColumns="1"
+
     tools:context=".MainActivity" >
 
     		<TextView
 	        android:layout_height="wrap_content"
 	        android:text="@string/direction" 
+			android:gravity="center_horizontal"
 	        android:textSize="20sp"
 	        />
 	        <TextView
 	        android:id="@+id/direction"    
 	        android:layout_height="wrap_content"
-	        android:textSize="100sp"
+	        android:gravity="center_horizontal"
+	        android:textSize="150sp"
 	        />
 	        <TextView
 	        android:layout_height="wrap_content"
 	        android:text="@string/velocity"
+	        android:gravity="center_horizontal"
 	        android:textSize="20sp"
 	         />
 	        <TextView
 	        android:id="@+id/velocity"    
 	        android:layout_height="wrap_content"
-	        android:textSize="100sp"
+	        android:gravity="center_horizontal"
+	        android:textSize="150sp"
 	        />     
         
 </TableLayout>

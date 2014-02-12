@@ -43,10 +43,6 @@ public class Wind {
 		return subObj;
 	}
 	
-	private static String getString(String tagName, JSONObject jObj) throws JSONException {
-		return jObj.getString(tagName);
-	}
-	
 	private static float  getFloat(String tagName, JSONObject jObj) throws JSONException {
 	    return (float) jObj.getDouble(tagName);
 	}

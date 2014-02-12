@@ -9,8 +9,7 @@ import android.view.Menu;
 import android.widget.TextView;
 
 public class MainActivity extends Activity {
-	
-	
+		
 	private TextView directionTextView;
 	private TextView velocityTextView;
 	
@@ -23,9 +22,11 @@ public class MainActivity extends Activity {
 		setContentView(R.layout.activity_main);
 		
 		directionTextView = (TextView) findViewById(R.id.direction);
+		directionTextView.setBackgroundColor(Color.YELLOW);
 		velocityTextView = (TextView) findViewById(R.id.velocity);
 		
 		new Thread(new Runnable() {		
+			
 			@Override
 			public void run() {
 				for(int i=0;i<100;i++){
@@ -63,6 +64,7 @@ public class MainActivity extends Activity {
 					try {
 						Thread.sleep(5000);
 					} catch (InterruptedException e) {}
+					
 				}
 			}
 		}).start();
