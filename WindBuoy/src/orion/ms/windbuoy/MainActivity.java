@@ -83,9 +83,7 @@ public class MainActivity extends Activity {
 				answer = answer + temp ;
 			}
 			reader.close();
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
+		} catch (Exception e) {}
 		return answer;
 	}
 
