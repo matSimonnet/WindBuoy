@@ -11,11 +11,12 @@ import android.view.MenuItem;
 import android.widget.TextView;
 
 public class MainActivity extends Activity {
-		
+	
+	static boolean realTime = true;
+	
 	private TextView directionTextView;
 	private TextView velocityTextView;
-	
-	Wind wind = new Wind();
+	private Wind wind;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -27,12 +28,14 @@ public class MainActivity extends Activity {
 		directionTextView.setBackgroundColor(Color.YELLOW);
 		velocityTextView = (TextView) findViewById(R.id.velocity);
 		
-		new Thread(new Runnable() {		
+		wind = new Wind();
+		
+		new Thread(new Runnable() {
 			
 			@Override
 			public void run() {
-				
-				for(int i=0;i<5;i++){
+									
+				while (realTime){	
 					String data = Utils.request("http://pubs.diabox.com/dataUpdate.php?dbx_id=16&dataNameList[]=st-mathieu_wind_rt");
 					try {
 						wind.getWind(data, wind);
@@ -69,7 +72,10 @@ public class MainActivity extends Activity {
 					} catch (InterruptedException e) {}					
 				}
 			}
+			
 		}).start();
+
+		
 	}
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
@@ -81,10 +87,12 @@ public class MainActivity extends Activity {
 	public boolean onOptionsItemSelected(MenuItem Item){
 		switch (Item.getItemId()) {
 		case R.id.item_realtime:
+			realTime = true;
 			Intent intentRealTime = new Intent(MainActivity.this,MainActivity.class);
 			startActivity(intentRealTime);
 			break;
 		case R.id.item_ten_min:
+			realTime = false;
 			Intent intent10min = new Intent(MainActivity.this,Activity10.class);
 			startActivity(intent10min);
 			break;
@@ -103,4 +111,17 @@ public class MainActivity extends Activity {
 		
 		return false;
 	}
+	
+	@Override
+	protected void onResume() {
+		realTime = true;
+		super.onResume();
+	}
+	
+	@Override
+	protected void onDestroy() {
+		super.onDestroy();
+		realTime = false;
+	}
+	
 }
