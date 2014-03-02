@@ -3,9 +3,11 @@ package orion.ms.windbuoy;
 import org.json.JSONException;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.view.Menu;
+import android.view.MenuItem;
 import android.widget.TextView;
 
 public class MainActivity extends Activity {
@@ -29,7 +31,8 @@ public class MainActivity extends Activity {
 			
 			@Override
 			public void run() {
-				for(int i=0;i<100;i++){
+				
+				for(int i=0;i<5;i++){
 					String data = Utils.request("http://pubs.diabox.com/dataUpdate.php?dbx_id=16&dataNameList[]=st-mathieu_wind_rt");
 					try {
 						wind.getWind(data, wind);
@@ -63,19 +66,41 @@ public class MainActivity extends Activity {
 					
 					try {
 						Thread.sleep(5000);
-					} catch (InterruptedException e) {}
-					
+					} catch (InterruptedException e) {}					
 				}
 			}
 		}).start();
 	}
-
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		// Inflate the menu; this adds items to the action bar if it is present.
 		getMenuInflater().inflate(R.menu.main, menu);
-		return true;
+		return super.onCreateOptionsMenu(menu);
 	}
+	@Override
+	public boolean onOptionsItemSelected(MenuItem Item){
+		switch (Item.getItemId()) {
+		case R.id.item_realtime:
+			Intent intentRealTime = new Intent(MainActivity.this,MainActivity.class);
+			startActivity(intentRealTime);
+			break;
+		case R.id.item_ten_min:
+			Intent intent10min = new Intent(MainActivity.this,Activity10.class);
+			startActivity(intent10min);
+			break;
+		case R.id.item_sixty_min:
+			Intent intent60min = new Intent(MainActivity.this,Activity10.class);
+			startActivity(intent60min);
+			break;
+		case R.id.item_map:
+			Intent intentMap = new Intent(MainActivity.this,Activity10.class);
+			startActivity(intentMap);
+			break;
 
-
+		default:
+			break;
+		}
+		
+		return false;
+	}
 }

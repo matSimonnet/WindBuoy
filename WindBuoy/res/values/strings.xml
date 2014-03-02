@@ -7,5 +7,9 @@
     <string name="direction">wind direction</string>
     <string name="velocityEvolution">wind velocity evolution</string>
     <string name="directionEvolution">wind direction evolution</string>
+    <string name="real_time">"real time"</string>
+    <string name="ten_min">"last 10 min"</string>
+    <string name="sixty_min">"last 60 min"</string>
+    <string name="map">"map"</string>
 
 </resources>
