@@ -8,6 +8,7 @@ import android.graphics.Color;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 public class MainActivity extends Activity {
@@ -16,6 +17,7 @@ public class MainActivity extends Activity {
 	
 	private TextView directionTextView;
 	private TextView velocityTextView;
+	private ImageView imageArrow;
 	private Wind wind;
 	
 	@Override
@@ -23,6 +25,17 @@ public class MainActivity extends Activity {
 			
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
+		
+//		Paint paint = new Paint();
+//        paint.setColor(Color.parseColor("#CD5C5C"));
+//        Bitmap bg = Bitmap.createBitmap(480, 800, Bitmap.Config.ARGB_8888);
+//        Canvas canvas = new Canvas(bg); 
+//        canvas.drawRect(500, 500, 500, 500, paint); 
+//        ImageView ll = (ImageView) findViewById(R.id.image);
+//        ll.setBackgroundDrawable(new BitmapDrawable(bg)); 
+		
+		imageArrow = (ImageView) findViewById(R.id.image);
+		
 		
 		directionTextView = (TextView) findViewById(R.id.direction);
 		directionTextView.setBackgroundColor(Color.YELLOW);
@@ -63,6 +76,7 @@ public class MainActivity extends Activity {
 							@Override
 							public void run() {
 								directionTextView.setText(""+ wind.direction);
+								imageArrow.setRotation(wind.direction-90);
 							}
 						});
 					}

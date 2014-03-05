@@ -7,8 +7,8 @@ import android.util.Log;
 
 public class Wind {
 
-	int direction = 0;
-	float velocity = 0;
+	int direction = 0, previousDirection = 0;
+	float velocity = 0, previousVelocity = 0;
 	
 	public void getWind(String data, Wind wind) throws JSONException{
 			
@@ -26,16 +26,38 @@ public class Wind {
 			//}
 					
 			JSONObject jObj = new JSONObject(data);
-			Log.i("JSONObject jObj",jObj.toString());
+			//Log.i("JSONObject jObj",jObj.toString());
 			
 			JSONObject windObject = getObject("st-mathieu_wind_rt", jObj);
-			Log.i("JSONObject windObject",windObject.toString());
+			//Log.i("JSONObject windObject",windObject.toString());
 			
 			this.setDirection(getInt("dir", windObject));
 			Log.i("String Wind","" + wind.direction);
 			
 			this.setVelocity( (float) Utils.round(getFloat("force", windObject))  );
-			Log.i("String Wind","" + wind.velocity);
+			//Log.i("String Wind","" + wind.velocity);
+			
+			
+			//Calculate delta
+			int deltaDirection = java.lang.Math.abs( this.previousDirection - this.direction );
+			if (deltaDirection > 180) deltaDirection = java.lang.Math.abs(deltaDirection-360);
+			if (this.direction - this.previousDirection < 0) deltaDirection = -deltaDirection;
+			Log.i("deltaDirection","" + deltaDirection);
+			
+			float deltaVelocity = this.velocity - this.previousVelocity;
+			//Log.i("deltaVelocity","" + wind.deltaVelocity);
+			
+			//refresh data
+			this.setPreviousDirection(this.direction);
+			Log.i("previousDirection","" + wind.previousDirection);
+			
+			this.setPreviousVelocity(this.velocity);
+			//Log.i("previousVelocity","" + wind.previousVelocity);
+			
+			
+			
+			
+			
 		}
 
 	private static JSONObject getObject(String tagName, JSONObject jObj)  throws JSONException {
@@ -64,5 +86,24 @@ public class Wind {
 	public void setVelocity(float velocity) {
 		this.velocity = velocity;
 	}
+
+	public int getPreviousDirection() {
+		return previousDirection;
+	}
+
+	public void setPreviousDirection(int previousDirection) {
+		this.previousDirection = previousDirection;
+	}
+
+	public float getPreviousVelocity() {
+		return previousVelocity;
+	}
+
+	public void setPreviousVelocity(float previousVelocity) {
+		this.previousVelocity = previousVelocity;
+	}
+	
+	
+	
 		
 }

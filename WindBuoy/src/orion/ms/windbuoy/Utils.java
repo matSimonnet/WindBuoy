@@ -61,6 +61,7 @@ public class Utils {
 		return subObj;
 	}
 	
+	@SuppressWarnings("unused")
 	private static String getString(String tagName, JSONObject jObj) throws JSONException {
 		return jObj.getString(tagName);
 	}
