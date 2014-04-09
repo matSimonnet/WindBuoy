@@ -28,15 +28,13 @@ public class MainActivity extends Activity {
 		
 //		Paint paint = new Paint();
 //        paint.setColor(Color.parseColor("#CD5C5C"));
-//        Bitmap bg = Bitmap.createBitmap(480, 800, Bitmap.Config.ARGB_8888);
+//        Bitmap bg = Bitmap.createBitmap(480,800,Bitmap.Config.ARGB_8888);
 //        Canvas canvas = new Canvas(bg); 
 //        canvas.drawRect(500, 500, 500, 500, paint); 
 //        ImageView ll = (ImageView) findViewById(R.id.image);
 //        ll.setBackgroundDrawable(new BitmapDrawable(bg)); 
 		
 		imageArrow = (ImageView) findViewById(R.id.image);
-		
-		
 		directionTextView = (TextView) findViewById(R.id.direction);
 		directionTextView.setBackgroundColor(Color.YELLOW);
 		velocityTextView = (TextView) findViewById(R.id.velocity);
@@ -49,7 +47,7 @@ public class MainActivity extends Activity {
 			public void run() {
 									
 				while (realTime){	
-					String data = Utils.request("http://pubs.diabox.com/dataUpdate.php?dbx_id=16&dataNameList[]=st-mathieu_wind_rt");
+					String data = Utils.request("http://windlive.biz/buoy/now.php?id=1");
 					try {
 						wind.getWind(data, wind);
 					} catch (JSONException e1) {}
@@ -82,7 +80,7 @@ public class MainActivity extends Activity {
 					}
 					
 					try {
-						Thread.sleep(5000);
+						Thread.sleep(2000);
 					} catch (InterruptedException e) {}					
 				}
 			}

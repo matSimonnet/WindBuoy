@@ -24,18 +24,52 @@ public class Wind {
 					//}
 			
 			//}
+			
+		//{
+			//    "valid": true,
+			//    "id": "1",
+			//    "gps": {
+			//	        "time": 1396560015,
+			//	        "longitude": "0.99711",
+			//	        "latitude": "47.4108"
+			//    },
+			//    "wind": {
+			//	        "time": 1396560016,
+			//	        "gust10": 0.8,
+			//	        "avg10": 0.4,
+			//	        "snapshot": 0.6,
+			//	        "way": "82"
+			//    },
+			//    "temperature": {
+			//	        "time": 1396560016,
+			//	        "air": 22
+			//    }
+		//}
 					
 			JSONObject jObj = new JSONObject(data);
-			//Log.i("JSONObject jObj",jObj.toString());
+			Log.i("JSONObject jObj",jObj.toString());
 			
-			JSONObject windObject = getObject("st-mathieu_wind_rt", jObj);
-			//Log.i("JSONObject windObject",windObject.toString());
+			//check if the server send valid data
+		    JSONObject validObject = getObject("valid", jObj);
+		    Log.i("JSONObject validOject",validObject.toString());
 			
-			this.setDirection(getInt("dir", windObject));
+			//check if the data come from the first or the second buoy
+			JSONObject idObject = getObject("id", jObj);
+		    Log.i("JSONObject idObject",idObject.toString());
+		
+			//gather data from gps of the buoy
+			JSONObject gpsObject = getObject("gps", jObj);
+			Log.i("JSONObject gpsObject",gpsObject.toString());
+		
+			//get the wind
+		    JSONObject windObject = getObject("wind", jObj);
+			Log.i("JSONObject windObject",windObject.toString());
+						
+			this.setDirection(getInt("way", windObject));
 			Log.i("String Wind","" + wind.direction);
 			
-			this.setVelocity( (float) Utils.round(getFloat("force", windObject))  );
-			//Log.i("String Wind","" + wind.velocity);
+			this.setVelocity( (float) Utils.round(getFloat("snapshot", windObject))  );
+			Log.i("String Wind","" + wind.velocity);
 			
 			
 			//Calculate delta
