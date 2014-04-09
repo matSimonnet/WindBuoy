@@ -12,11 +12,11 @@ public class Wind {
 	
 	public void getWind(String data, Wind wind) throws JSONException{
 			
-			//-------> jObj
+		//-------> windObject
 			//{
 			//"st-mathieu_wind_rt":
+			
 					
-					//-------> windObject
 					//{
 					//"date":1392148699, 
 					//"dir":270,
@@ -50,12 +50,12 @@ public class Wind {
 			Log.i("JSONObject jObj",jObj.toString());
 			
 			//check if the server send valid data
-		    JSONObject validObject = getObject("valid", jObj);
-		    Log.i("JSONObject validOject",validObject.toString());
+		    boolean validity = getBool("valid", jObj);
+		    Log.i("Validity","" + validity);
 			
 			//check if the data come from the first or the second buoy
-			JSONObject idObject = getObject("id", jObj);
-		    Log.i("JSONObject idObject",idObject.toString());
+			int buoyNumber = getInt("id", jObj);
+		    Log.i("buoyNumber","" + buoyNumber );
 		
 			//gather data from gps of the buoy
 			JSONObject gpsObject = getObject("gps", jObj);
@@ -105,6 +105,10 @@ public class Wind {
 	 
 	private static int  getInt(String tagName, JSONObject jObj) throws JSONException {
 	    return jObj.getInt(tagName);
+	}
+	
+	private static boolean  getBool(String tagName, JSONObject jObj) throws JSONException {
+	    return jObj.getBoolean(tagName);
 	}
 	
 	
