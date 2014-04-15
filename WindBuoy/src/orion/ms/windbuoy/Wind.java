@@ -98,6 +98,7 @@ public class Wind {
 			float deltaVelocity = this.velocity - this.previousVelocity;
 			//Log.i("deltaVelocity","" + wind.deltaVelocity);
 			
+			//todo
 			//refresh data
 			this.setPreviousDirection(this.direction);
 			Log.i("previousDirection","" + wind.previousDirection);
