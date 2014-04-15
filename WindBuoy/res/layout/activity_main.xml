@@ -17,7 +17,7 @@
     		android:layout_weight="50"
     		android:layout_width="fill_parent" 
 	        android:gravity="center"
-	        android:textSize="20sp"
+	        android:textSize="10dp"
 	        android:text="@string/direction"
 	        />
         	        <TextView
@@ -26,7 +26,7 @@
 	        android:layout_width="fill_parent"
 	        android:text="@string/velocity"
 	        android:gravity="center"
-	        android:textSize="20sp"
+	        android:textSize="10dp"
 	         />
         
         
@@ -37,32 +37,94 @@
 	        android:id="@+id/direction"   
 	        android:layout_weight="50"
 	        android:gravity="center"
-	        android:textSize="150sp"
+	        android:textSize="50dp"
 	        />
         	        
         	<TextView
 	        android:id="@+id/velocity"    
 	        android:layout_weight="50"
 	        android:gravity="center"
-	        android:textSize="150sp"
+	        android:textSize="50dp"
 	        />   
                 
     </TableRow>
 
 </TableLayout>
     
-    <LinearLayout           
+   <RelativeLayout           
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
     >
         	        <ImageView 
         	android:layout_width="fill_parent"
-        	android:layout_height="match_parent"
-	        android:id="@+id/image"  
+        	android:layout_height="350dp"
+	        android:id="@+id/image1"  
 	        android:gravity="center"
-	        android:src="@drawable/arrow"
 	        />
-    </LinearLayout>
+	               <ImageView 
+        	android:layout_width="fill_parent"
+        	android:layout_height="350dp"
+	        android:id="@+id/image2"  
+	        android:gravity="center"
+	        />
+	               <ImageView 
+        	android:layout_width="fill_parent"
+        	android:layout_height="350dp"
+	        android:id="@+id/image3"  
+	        android:gravity="center"
+	        />
+	               <ImageView 
+        	android:layout_width="fill_parent"
+        	android:layout_height="350dp"
+	        android:id="@+id/image4"  
+	        android:gravity="center"
+	        />
+	                       	        <ImageView 
+        	android:layout_width="fill_parent"
+        	android:layout_height="350dp"
+	        android:id="@+id/image5"  
+	        android:gravity="center"
+	        />
+	               <ImageView 
+        	android:layout_width="fill_parent"
+        	android:layout_height="350dp"
+	        android:id="@+id/image6"  
+	        android:gravity="center"
+	        />
+	               <ImageView 
+        	android:layout_width="fill_parent"
+        	android:layout_height="350dp"
+	        android:id="@+id/image7"  
+	        android:gravity="center"
+	        />
+	               <ImageView 
+        	android:layout_width="fill_parent"
+        	android:layout_height="350dp"
+	        android:id="@+id/image8"  
+	        android:gravity="center"
+	        />
+	                       	        <ImageView 
+        	android:layout_width="fill_parent"
+        	android:layout_height="350dp"
+	        android:id="@+id/image9"  
+	        android:gravity="center"
+	        />
+	               <ImageView 
+        	android:layout_width="fill_parent"
+        	android:layout_height="350dp"
+	        android:id="@+id/image10"  
+	        android:gravity="center"
+	        />
+	               
+       
+        	        
+        	        <!-- SurfaceView
+        android:id="@+id/surface"
+        android:layout_width="fill_parent"
+        android:layout_height="350dp" 
+        	/-->
+        	        
+    </RelativeLayout>
 
 </LinearLayout>
 

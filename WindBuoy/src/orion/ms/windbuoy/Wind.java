@@ -24,6 +24,19 @@ public class Wind {
 					//}
 			
 			//}
+		
+		JSONObject jObj = new JSONObject(data);
+		//Log.i("JSONObject jObj",jObj.toString());
+		
+		JSONObject windObject = getObject("st-mathieu_wind_rt", jObj);
+		//Log.i("JSONObject windObject",windObject.toString());
+		
+		
+		this.setDirection(getInt("dir", windObject));
+		Log.i("String Wind","" + wind.direction);
+		
+		this.setVelocity( (float) Utils.round(getFloat("force", windObject))  );
+		//Log.i("String Wind","" + wind.velocity);
 			
 		//{
 			//    "valid": true,
@@ -45,7 +58,8 @@ public class Wind {
 			//	        "air": 22
 			//    }
 		//}
-					
+			
+		/*
 			JSONObject jObj = new JSONObject(data);
 			Log.i("JSONObject jObj",jObj.toString());
 			
@@ -65,12 +79,13 @@ public class Wind {
 		    JSONObject windObject = getObject("wind", jObj);
 			Log.i("JSONObject windObject",windObject.toString());
 						
+			
 			this.setDirection(getInt("way", windObject));
 			Log.i("String Wind","" + wind.direction);
 			
 			this.setVelocity( (float) Utils.round(getFloat("snapshot", windObject))  );
 			Log.i("String Wind","" + wind.velocity);
-			
+			*/
 			
 			//Calculate delta
 			int deltaDirection = java.lang.Math.abs( this.previousDirection - this.direction );
