@@ -93,6 +93,8 @@ public class Wind {
 			if (this.direction - this.previousDirection < 0) deltaDirection = -deltaDirection;
 			Log.i("deltaDirection","" + deltaDirection);
 			
+			
+			//todo
 			float deltaVelocity = this.velocity - this.previousVelocity;
 			//Log.i("deltaVelocity","" + wind.deltaVelocity);
 			
