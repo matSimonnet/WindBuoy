@@ -31,7 +31,7 @@ public class MainActivity extends Activity {
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
-			//test
+
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
 			
@@ -81,7 +81,7 @@ public class MainActivity extends Activity {
 							}
 						});
 					}
-					
+				
 					if (wind.direction>0){
 					directionTextView.post(new Runnable() {
 							@Override
