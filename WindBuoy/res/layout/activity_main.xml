@@ -54,70 +54,15 @@
    <RelativeLayout           
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
+    android:id="@+id/relativelayout"
     >
         	        <ImageView 
         	android:layout_width="fill_parent"
         	android:layout_height="350dp"
-	        android:id="@+id/image1"  
+	        android:id="@+id/image"  
 	        android:gravity="center"
 	        />
-	               <ImageView 
-        	android:layout_width="fill_parent"
-        	android:layout_height="350dp"
-	        android:id="@+id/image2"  
-	        android:gravity="center"
-	        />
-	               <ImageView 
-        	android:layout_width="fill_parent"
-        	android:layout_height="350dp"
-	        android:id="@+id/image3"  
-	        android:gravity="center"
-	        />
-	               <ImageView 
-        	android:layout_width="fill_parent"
-        	android:layout_height="350dp"
-	        android:id="@+id/image4"  
-	        android:gravity="center"
-	        />
-	                       	        <ImageView 
-        	android:layout_width="fill_parent"
-        	android:layout_height="350dp"
-	        android:id="@+id/image5"  
-	        android:gravity="center"
-	        />
-	               <ImageView 
-        	android:layout_width="fill_parent"
-        	android:layout_height="350dp"
-	        android:id="@+id/image6"  
-	        android:gravity="center"
-	        />
-	               <ImageView 
-        	android:layout_width="fill_parent"
-        	android:layout_height="350dp"
-	        android:id="@+id/image7"  
-	        android:gravity="center"
-	        />
-	               <ImageView 
-        	android:layout_width="fill_parent"
-        	android:layout_height="350dp"
-	        android:id="@+id/image8"  
-	        android:gravity="center"
-	        />
-	                       	        <ImageView 
-        	android:layout_width="fill_parent"
-        	android:layout_height="350dp"
-	        android:id="@+id/image9"  
-	        android:gravity="center"
-	        />
-	               <ImageView 
-        	android:layout_width="fill_parent"
-        	android:layout_height="350dp"
-	        android:id="@+id/image10"  
-	        android:gravity="center"
-	        />
-	               
-       
-        	        
+    
         	        <!-- SurfaceView
         android:id="@+id/surface"
         android:layout_width="fill_parent"

@@ -28,7 +28,7 @@ public class Utils {
 		return answer;
 	}
 	
-	public static void getWind(String data, Wind wind) throws JSONException{
+	/*public static void getWind(String data, Wind wind) throws JSONException{
 		
 		//-------> jObj
 		//{
@@ -46,7 +46,8 @@ public class Utils {
 		JSONObject jObj = new JSONObject(data);
 		Log.i("JSONObject jObj",jObj.toString());
 		
-		JSONObject windObject = getObject("st-mathieu_wind_rt", jObj);
+		//JSONObject windObject = getObject("st-mathieu_wind_rt", jObj);
+		JSONObject windObject = getObject("Renard_wind_rt", jObj);
 		Log.i("JSONObject windObject",windObject.toString());
 		
 		wind.setDirection(getInt("dir", windObject));
@@ -54,7 +55,7 @@ public class Utils {
 		
 		wind.setVelocity( (float) Utils.round(getFloat("force", windObject))  );
 		Log.i("String Wind","" + wind.velocity);
-	}
+	}*/
 	
 	private static JSONObject getObject(String tagName, JSONObject jObj)  throws JSONException {
 		JSONObject subObj = jObj.getJSONObject(tagName);

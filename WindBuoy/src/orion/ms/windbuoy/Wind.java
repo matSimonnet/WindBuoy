@@ -28,7 +28,8 @@ public class Wind {
 		JSONObject jObj = new JSONObject(data);
 		//Log.i("JSONObject jObj",jObj.toString());
 		
-		JSONObject windObject = getObject("st-mathieu_wind_rt", jObj);
+		//JSONObject windObject = getObject("st-mathieu_wind_rt", jObj);
+		JSONObject windObject = getObject("Renard_wind_rt", jObj);
 		//Log.i("JSONObject windObject",windObject.toString());
 		
 		
