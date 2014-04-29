@@ -15,26 +15,34 @@ import android.widget.TextView;
 
 public class MainActivity extends Activity {
 	
-	Context mcontext = this;
+	//to access context in the  thread loop
+	public Context context = this;
+	
+	//to stop http requests when leaving MainActivity
 	static boolean realTime = true;
-	private int run = 1;
+	
+	//to populate page
 	private TextView directionTextView;
 	private TextView velocityTextView;
-	private Wind wind;
 	private ImageView imageArrow;
-	RelativeLayout ArrowLayout;
-	RelativeLayout.LayoutParams lp;
+	
+	//to dynamically 
+	RelativeLayout imageLayout;
+	RelativeLayout.LayoutParams imageLayoutParameter;
+	
+	//to use JSON for wind values gathering
+	private Wind wind;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
-			
 		
-		ArrowLayout = (RelativeLayout) findViewById(R.id.relativelayout);
-		lp = new RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.WRAP_CONTENT,RelativeLayout.LayoutParams.WRAP_CONTENT);
-		lp.addRule(RelativeLayout.CENTER_HORIZONTAL);
+		//to populate page
+		imageLayout = (RelativeLayout) findViewById(R.id.relativelayout);
+		imageLayoutParameter = new RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.WRAP_CONTENT,RelativeLayout.LayoutParams.WRAP_CONTENT);
+		imageLayoutParameter.addRule(RelativeLayout.CENTER_HORIZONTAL);
 		imageArrow = (ImageView) findViewById(R.id.image);
 		directionTextView = (TextView) findViewById(R.id.direction);
 		directionTextView.setBackgroundColor(Color.YELLOW);
@@ -83,10 +91,10 @@ public class MainActivity extends Activity {
 									imageArrow.setImageResource(R.drawable.thin_arrow);
 									imageArrow.setRotation(wind.direction);
 									
-									ImageView imageArrow1 = new ImageView(mcontext);
+									ImageView imageArrow1 = new ImageView(context);
 									imageArrow1.setImageResource(R.drawable.thin_arrow);
 									
-									ArrowLayout.addView(imageArrow1, lp);
+									imageLayout.addView(imageArrow1, imageLayoutParameter);
 									imageArrow1.setRotation(wind.direction);
 									imageArrow1.setScaleX(wind.velocity/2);
 									imageArrow1.setScaleY(wind.velocity/2);
