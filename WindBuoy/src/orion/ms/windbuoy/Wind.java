@@ -25,6 +25,9 @@ public class Wind {
 			
 			//}
 		
+		
+		/////// FOR DIABOX
+		/*
 		JSONObject jObj = new JSONObject(data);
 		//Log.i("JSONObject jObj",jObj.toString());
 		
@@ -39,6 +42,8 @@ public class Wind {
 		this.setVelocity( (float) Utils.round(getFloat("force", windObject))  );
 		//Log.i("String Wind","" + wind.velocity);
 			
+		*/
+		
 		//{
 			//    "valid": true,
 			//    "id": "1",
@@ -60,7 +65,7 @@ public class Wind {
 			//    }
 		//}
 			
-		/*
+		
 			JSONObject jObj = new JSONObject(data);
 			Log.i("JSONObject jObj",jObj.toString());
 			
@@ -86,7 +91,7 @@ public class Wind {
 			
 			this.setVelocity( (float) Utils.round(getFloat("snapshot", windObject))  );
 			Log.i("String Wind","" + wind.velocity);
-			*/
+			
 			
 			//Calculate delta
 			int deltaDirection = java.lang.Math.abs( this.previousDirection - this.direction );

@@ -21,7 +21,8 @@ public class Activity10 extends Activity{
 		getMenuInflater().inflate(R.menu.main, menu);
 		return super.onCreateOptionsMenu(menu);
 	}
-	@Override
+	
+	/*@Override
 	public boolean onOptionsItemSelected(MenuItem Item){
 		switch (Item.getItemId()) {
 		case R.id.item_realtime:
@@ -49,4 +50,5 @@ public class Activity10 extends Activity{
 		
 		return false;
 	}
+	*/
 }
