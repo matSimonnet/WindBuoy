@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout 
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical"
+    >
+
+<TableLayout
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content" >
+    
+    <TableRow
+        >
+            		<TextView
+    		android:id="@+id/direction_string"
+    		android:layout_weight="50"
+    		android:layout_width="fill_parent" 
+	        android:gravity="center"
+	        android:text="@string/direction"
+	       	android:textSize="10dp"
+	        />
+        	        <TextView
+	        android:id="@+id/reference_string"
+	        android:layout_weight="50"
+	        android:layout_width="fill_parent"
+	        android:text="reference"
+	        android:gravity="center"
+	        android:textSize="10dp"
+	         />
+        	         <TextView
+	        android:id="@+id/relative_string"
+	        android:layout_weight="50"
+	        android:layout_width="fill_parent"
+	        android:text="difference"
+	        android:gravity="center"
+	        android:textSize="10dp"
+	         />
+        	        
+        
+        
+    </TableRow>
+    
+    <TableRow>
+        	        <TextView
+	        android:id="@+id/direction"   
+	        android:layout_weight="50"
+	        android:gravity="center"
+	        android:textSize="50dp"
+	        />
+        	        
+        	<TextView
+	        android:id="@+id/reference"    
+	        android:layout_weight="50"
+	        android:gravity="center"
+	        android:textSize="50dp"
+	        />   
+
+        	<TextView
+	        android:id="@+id/relative"    
+	        android:layout_weight="50"
+	        android:gravity="center"
+	        android:textSize="50dp"
+	        /> 	        
+                
+    </TableRow>
+
+</TableLayout>
+    
+   <RelativeLayout           
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:layout_gravity="bottom"
+    android:id="@+id/relativelayout"
+    >
+        	        <!--ImageView 
+        	android:layout_width="fill_parent"
+        	android:layout_height="350dp"
+	        android:id="@+id/image"  
+	        android:gravity="center"
+	        /-->
+    
+        	        <!-- SurfaceView
+        android:id="@+id/surface"
+        android:layout_width="fill_parent"
+        android:layout_height="350dp" 
+        	/-->
+        	        
+    </RelativeLayout>
+
+</LinearLayout>
+
+
+
+<!-- RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical"
+    tools:context=".MainActivity" >
+  
+    		<TextView
+    		android:id="@+id/direction_string"
+	        android:text="@string/direction" 
+	        android:layout_width="600sp"
+	        android:layout_height="wrap_content"
+			android:gravity="center_horizontal"
+	        android:textSize="20sp"
+	        />
+	        <TextView
+	        android:id="@+id/direction"  
+	        android:layout_below="@+id/direction_string"  
+	        android:layout_height="wrap_content"
+	        android:layout_width="600sp"
+	        android:gravity="center_horizontal"
+	        android:textSize="150sp"
+	        />
+	        
+	        <TextView
+	        android:id="@+id/velocity_string"
+	        android:layout_toRightOf="@+id/direction_string"
+	        android:layout_height="wrap_content"
+	        android:layout_width="600sp"
+	        android:text="@string/velocity"
+	        android:gravity="center_horizontal"
+	        android:textSize="20sp"
+	         />
+	        <TextView
+	        android:id="@+id/velocity"    
+	        android:layout_below="@+id/velocity_string"
+	        android:layout_toRightOf="@+id/direction"  
+	        android:layout_height="wrap_content"
+	        android:layout_width="600sp"
+	        android:gravity="center_horizontal"
+	        android:textSize="150sp"
+	        />   
+	        
+	        <ImageView 
+	        android:id="@+id/image" 
+	        android:layout_height="400sp"
+	        android:layout_width="1200sp"
+	        android:gravity="center"
+	        android:src="@drawable/arrow"
+	        />
+     
+</RelativeLayout-->
