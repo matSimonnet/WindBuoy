@@ -18,7 +18,7 @@
     		android:layout_width="fill_parent" 
 	        android:gravity="center"
 	        android:text="@string/direction"
-	       	android:textSize="10dp"
+	       	android:textSize="20dp"
 	        />
         	        <TextView
 	        android:id="@+id/reference_string"
@@ -26,7 +26,7 @@
 	        android:layout_width="fill_parent"
 	        android:text="reference"
 	        android:gravity="center"
-	        android:textSize="10dp"
+	        android:textSize="20dp"
 	         />
         	         <TextView
 	        android:id="@+id/relative_string"
@@ -34,7 +34,7 @@
 	        android:layout_width="fill_parent"
 	        android:text="difference"
 	        android:gravity="center"
-	        android:textSize="10dp"
+	        android:textSize="20dp"
 	         />
         	        
         
@@ -69,8 +69,8 @@
     
    <RelativeLayout           
     android:layout_width="fill_parent"
-    android:layout_height="fill_parent"
-    android:layout_gravity="bottom"
+    android:layout_height="wrap_content"
+    android:keepScreenOn="true"
     android:id="@+id/relativelayout"
     >
         	        <!--ImageView 

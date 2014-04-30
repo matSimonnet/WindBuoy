@@ -6,9 +6,9 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
+import android.content.res.Configuration;
 import android.graphics.Color;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.WindowManager.LayoutParams;
@@ -30,10 +30,8 @@ public class MainActivity extends Activity {
 	
 	//to populate page
 	private TextView directionTextView;
-	private TextView velocityTextView;
 	private TextView relativeWindTextView;
 	private TextView referenceWindTextView;
-	private ImageView imageArrow;
 	
 	//to dynamically 
 	RelativeLayout imageLayout;
@@ -57,16 +55,13 @@ public class MainActivity extends Activity {
 		imageLayout = (RelativeLayout) findViewById(R.id.relativelayout);
 		imageLayoutParameter = new RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.WRAP_CONTENT,RelativeLayout.LayoutParams.WRAP_CONTENT);
 		imageLayoutParameter.addRule(RelativeLayout.CENTER_HORIZONTAL);
-		//imageLayoutParameter.addRule(RelativeLayout.CENTER_VERTICAL);
 		imageLayoutParameter.addRule(RelativeLayout.ALIGN_PARENT_BOTTOM);
-		//imageArrow = (ImageView) findViewById(R.id.image);
 		directionTextView = (TextView) findViewById(R.id.direction);
 		directionTextView.setBackgroundColor(Color.YELLOW);
 		relativeWindTextView = (TextView) findViewById(R.id.relative);
 		relativeWindTextView.setBackgroundColor(Color.parseColor("#05A811"));
 		referenceWindTextView = (TextView) findViewById(R.id.reference);
 		referenceWindTextView.setBackgroundColor(Color.LTGRAY);
-		//velocityTextView = (TextView) findViewById(R.id.velocity);
 		
 		wind = new Wind();
 		
@@ -91,19 +86,18 @@ public class MainActivity extends Activity {
 									directionTextView.setText(""+ wind.direction);
 									ImageView imageArrow1 = new ImageView(context);									
 									
-									if (refWind){
-										offset = wind.direction;
-										Log.i("offset = ", wind.direction+"");
-										referenceWind = wind.direction;
-										imageArrow1.setImageResource(R.drawable.thin_arrow);
-										imageLayout.addView(imageArrow1, imageLayoutParameter);
-										imageArrow1.setRotation(wind.direction - offset);
-																				imageArrow1.setScaleX(2.5f);
-										imageArrow1.setScaleY(2.5f);
-										
-										refWind= false;
+									if ( refWind || referenceWind == 999 ){
+											offset = wind.direction;
+											referenceWind = wind.direction;
+											imageArrow1.setImageResource(R.drawable.thin_arrow);
+											imageLayout.addView(imageArrow1, imageLayoutParameter);
+											imageArrow1.setRotation(wind.direction - offset);
+											if ((getResources().getConfiguration().screenLayout & Configuration.SCREENLAYOUT_SIZE_MASK) == Configuration.SCREENLAYOUT_SIZE_XLARGE) {
+												imageArrow1.setScaleX(0.9f);
+												imageArrow1.setScaleY(0.9f);
+												}
+											refWind= false;
 									}
-									
 									else {
 									
 									relativeWind = wind.direction - offset;
@@ -122,9 +116,15 @@ public class MainActivity extends Activity {
 									}
 									imageLayout.addView(imageArrow1, imageLayoutParameter);
 									imageArrow1.setRotation(relativeWind);
-									imageArrow1.setScaleX(2);
-									imageArrow1.setScaleY(2);
 									imageArrow1.setAlpha(0.05f);
+									if ((getResources().getConfiguration().screenLayout & Configuration.SCREENLAYOUT_SIZE_MASK) == Configuration.SCREENLAYOUT_SIZE_XLARGE) {
+										imageArrow1.setScaleX(0.8f);
+										imageArrow1.setScaleY(0.8f);
+										}
+									else if ((getResources().getConfiguration().screenLayout & Configuration.SCREENLAYOUT_SIZE_MASK) == Configuration.SCREENLAYOUT_SIZE_NORMAL) {
+										imageArrow1.setScaleX(0.9f);
+										imageArrow1.setScaleY(0.9f);
+									}
 									}
 									
 									
@@ -134,14 +134,14 @@ public class MainActivity extends Activity {
 							});
 						}	
 						
-						if (referenceWind!=999){
+						//if (referenceWind!=999){
 							referenceWindTextView.post(new Runnable() {
 									@Override
 									public void run() {
 										referenceWindTextView.setText("" + referenceWind);
 									}
 								});
-							}
+							//}
 							
 							relativeWindTextView.post(new Runnable() {
 								@Override
@@ -233,5 +233,6 @@ public class MainActivity extends Activity {
 	protected void onDestroy() {
 		super.onDestroy();
 		realTime = false;
+		System.exit(0);
 	}	
 }
