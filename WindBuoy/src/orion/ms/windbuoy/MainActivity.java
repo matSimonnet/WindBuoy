@@ -8,8 +8,10 @@ import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.WindowManager.LayoutParams;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -22,9 +24,15 @@ public class MainActivity extends Activity {
 	//to stop http requests when leaving MainActivity
 	static boolean realTime = true;
 	
+	//to set reference wind
+	static boolean refWind = true;
+	int offset = 0;
+	
 	//to populate page
 	private TextView directionTextView;
 	private TextView velocityTextView;
+	private TextView relativeWindTextView;
+	private TextView referenceWindTextView;
 	private ImageView imageArrow;
 	
 	//to dynamically 
@@ -33,11 +41,14 @@ public class MainActivity extends Activity {
 	
 	//to use JSON for wind values gathering
 	private Wind wind;
+	private int referenceWind = 999;
+	private int relativeWind = 0;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		
 		setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
+		getWindow().addFlags(LayoutParams.FLAG_KEEP_SCREEN_ON);
 		
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
@@ -51,7 +62,11 @@ public class MainActivity extends Activity {
 		//imageArrow = (ImageView) findViewById(R.id.image);
 		directionTextView = (TextView) findViewById(R.id.direction);
 		directionTextView.setBackgroundColor(Color.YELLOW);
-		velocityTextView = (TextView) findViewById(R.id.velocity);
+		relativeWindTextView = (TextView) findViewById(R.id.relative);
+		relativeWindTextView.setBackgroundColor(Color.parseColor("#05A811"));
+		referenceWindTextView = (TextView) findViewById(R.id.reference);
+		referenceWindTextView.setBackgroundColor(Color.LTGRAY);
+		//velocityTextView = (TextView) findViewById(R.id.velocity);
 		
 		wind = new Wind();
 		
@@ -68,45 +83,49 @@ public class MainActivity extends Activity {
 						wind.getWind(data, wind);
 					} catch (JSONException e1) {}
 					
-					if (wind.velocity>0){
-					velocityTextView.post(new Runnable() {
-							@Override
-							public void run() {
-								if ( wind.velocity > 20) {
-									velocityTextView.setBackgroundColor(Color.RED);
-									velocityTextView.setScaleX(1.2f);
-								}
-								if ( wind.velocity < 20){
-									velocityTextView.setBackgroundColor(Color.BLUE);
-								}
-								velocityTextView.setText("" + wind.velocity);
-								velocityTextView.setScaleX(1.0f);
-							}
-						});
-					}
-				
-				//for (int i = 0; i<10 ;i++){	
+
 						if (wind.direction>0){
 						directionTextView.post(new Runnable() {
 								@Override
 								public void run() {
 									directionTextView.setText(""+ wind.direction);
+									ImageView imageArrow1 = new ImageView(context);									
 									
+									if (refWind){
+										offset = wind.direction;
+										Log.i("offset = ", wind.direction+"");
+										referenceWind = wind.direction;
+										imageArrow1.setImageResource(R.drawable.thin_arrow);
+										imageLayout.addView(imageArrow1, imageLayoutParameter);
+										imageArrow1.setRotation(wind.direction - offset);
+																				imageArrow1.setScaleX(2.5f);
+										imageArrow1.setScaleY(2.5f);
+										
+										refWind= false;
+									}
 									
-									//imageArrow.setImageResource(R.drawable.thin_arrow);
-									//imageArrow.setRotation(wind.direction);
+									else {
 									
-									ImageView imageArrow1 = new ImageView(context);
-									imageArrow1.setImageResource(R.drawable.thin_arrow);
+									relativeWind = wind.direction - offset;
 									
+									if ( Math.abs(relativeWind) < 7 ){
+										imageArrow1.setImageResource(R.drawable.thin_arrow_green);
+										relativeWindTextView.setBackgroundColor(Color.parseColor("#05A811"));	
+									}
+									if ( Math.abs(relativeWind) >= 7 && Math.abs(relativeWind) < 14){
+										imageArrow1.setImageResource(R.drawable.thin_arrow_orange);
+										relativeWindTextView.setBackgroundColor(Color.parseColor("#FFC001"));	
+									}
+									if ( Math.abs(relativeWind) >= 15){
+										imageArrow1.setImageResource(R.drawable.thin_arrow_red);
+										relativeWindTextView.setBackgroundColor(Color.parseColor("#FFC001"));
+									}
 									imageLayout.addView(imageArrow1, imageLayoutParameter);
-									imageArrow1.setRotation(wind.direction);
-									//imageArrow1.setScaleX(wind.velocity/10);
-									//imageArrow1.setScaleY(wind.velocity/10);
+									imageArrow1.setRotation(relativeWind);
 									imageArrow1.setScaleX(2);
 									imageArrow1.setScaleY(2);
-									imageArrow1.setAlpha(0.20f);
-									
+									imageArrow1.setAlpha(0.05f);
+									}
 									
 									
 									//table for transparency using timestamp
@@ -115,8 +134,32 @@ public class MainActivity extends Activity {
 							});
 						}	
 						
+						if (referenceWind!=999){
+							referenceWindTextView.post(new Runnable() {
+									@Override
+									public void run() {
+										referenceWindTextView.setText("" + referenceWind);
+									}
+								});
+							}
+							
+							relativeWindTextView.post(new Runnable() {
+								@Override
+								public void run() {
+									
+									relativeWindTextView.setText("" + relativeWind);
+									
+									if ( relativeWind > 0){
+										relativeWindTextView.setText("+" + "" + relativeWind);
+									}
+									if (  Math.abs(relativeWind) > 15){
+										relativeWindTextView.setBackgroundColor(Color.RED);
+									}
+								}
+							});
+						
 						try {
-							Thread.sleep(2000);
+							Thread.sleep(1000);
 						} catch (InterruptedException e) {}
 					//}
 				}//end of infinite loop
@@ -138,8 +181,11 @@ public class MainActivity extends Activity {
 		switch (Item.getItemId()) {
 		case R.id.item_refwind:
 			realTime = true;
+			refWind = true;
 			Intent intentRealTime = new Intent(MainActivity.this,MainActivity.class);
 			startActivity(intentRealTime);
+			
+			
 			break;
 		default:
 			break;

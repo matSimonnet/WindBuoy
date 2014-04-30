@@ -25,14 +25,19 @@ public final class R {
         public static final int ic_launcher=0x7f020001;
         public static final int opacity=0x7f020002;
         public static final int thin_arrow=0x7f020003;
+        public static final int thin_arrow_green=0x7f020004;
+        public static final int thin_arrow_orange=0x7f020005;
+        public static final int thin_arrow_red=0x7f020006;
     }
     public static final class id {
-        public static final int direction=0x7f080002;
+        public static final int direction=0x7f080003;
         public static final int direction_string=0x7f080000;
-        public static final int item_refwind=0x7f080005;
-        public static final int relativelayout=0x7f080004;
-        public static final int velocity=0x7f080003;
-        public static final int velocity_string=0x7f080001;
+        public static final int item_refwind=0x7f080007;
+        public static final int reference=0x7f080004;
+        public static final int reference_string=0x7f080001;
+        public static final int relative=0x7f080005;
+        public static final int relative_string=0x7f080002;
+        public static final int relativelayout=0x7f080006;
     }
     public static final class layout {
         public static final int activity_10=0x7f030000;

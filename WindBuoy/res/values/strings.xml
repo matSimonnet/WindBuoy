@@ -4,7 +4,7 @@
     <string name="app_name">WindBuoy</string>
     <string name="action_settings">Settings</string>
     <string name="velocity">wind velocity (kts)</string>
-    <string name="direction">wind direction</string>
+    <string name="direction">direction</string>
     <string name="velocityEvolution">wind velocity evolution</string>
     <string name="directionEvolution">wind direction evolution</string>
     <string name="real_time">"real time"</string>

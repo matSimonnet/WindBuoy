@@ -17,17 +17,26 @@
     		android:layout_weight="50"
     		android:layout_width="fill_parent" 
 	        android:gravity="center"
-	        android:textSize="10dp"
 	        android:text="@string/direction"
+	       	android:textSize="50dp"
 	        />
         	        <TextView
-	        android:id="@+id/velocity_string"
+	        android:id="@+id/reference_string"
 	        android:layout_weight="50"
 	        android:layout_width="fill_parent"
-	        android:text="@string/velocity"
+	        android:text="reference"
 	        android:gravity="center"
-	        android:textSize="10dp"
+	        android:textSize="50dp"
 	         />
+        	         <TextView
+	        android:id="@+id/relative_string"
+	        android:layout_weight="50"
+	        android:layout_width="fill_parent"
+	        android:text="difference"
+	        android:gravity="center"
+	        android:textSize="50dp"
+	         />
+        	        
         
         
     </TableRow>
@@ -41,11 +50,18 @@
 	        />
         	        
         	<TextView
-	        android:id="@+id/velocity"    
+	        android:id="@+id/reference"    
 	        android:layout_weight="50"
 	        android:gravity="center"
 	        android:textSize="50dp"
 	        />   
+
+        	<TextView
+	        android:id="@+id/relative"    
+	        android:layout_weight="50"
+	        android:gravity="center"
+	        android:textSize="50dp"
+	        /> 	        
                 
     </TableRow>
 
