@@ -71,9 +71,9 @@ public class MainActivity extends Activity {
 			public void run() {
 									
 				while (realTime){	
-					String data = Utils.request("http://windlive.biz/buoy/now.php?id=1");
+					//String data = Utils.request("http://windlive.biz/buoy/now.php?id=1");
 					//String data = Utils.request("http://pubs.diabox.com/dataUpdate.php?dbx_id=16&dataNameList[]=st-mathieu_wind_rt");
-					//String data = Utils.request("http://pubs.diabox.com/dataUpdate.php?dbx_id=10&dataNameList[]=Renard_wind_rt");
+					String data = Utils.request("http://pubs.diabox.com/dataUpdate.php?dbx_id=10&dataNameList[]=Renard_wind_rt");
 					try {
 						wind.getWind(data, wind);
 					} catch (JSONException e1) {}
