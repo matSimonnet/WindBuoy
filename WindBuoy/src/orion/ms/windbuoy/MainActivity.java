@@ -159,7 +159,7 @@ public class MainActivity extends Activity {
 							});
 						
 						try {
-							Thread.sleep(1000);
+							Thread.sleep(5000);
 						} catch (InterruptedException e) {}
 					//}
 				}//end of infinite loop
